@@ -2,28 +2,33 @@
 
 int main()
 {
-    int a[10];
-    int num[10]={1,2,3,4,5,6,7,8,9,10}; //1~10까지의 정수
-    int count[10]={0}; //각 정수가 입력된 개수
-	int i;
-    for (i=0;i<10;i++){
-        scanf("%d",&a[i]);
-        if(a[i]>10 || a[i]<=0){
+    char eng[26]; //대문자 문자열 저장
+    for(int i=0;i<26;i++){
+        eng[i]=65+i;
+    }
+    int count[26]={0,}; //각 정수가 입력된 개수
+    int i=0;
+    char a[100];
+    while(1){
+        scanf("%c",&a[i]);
+        if(a[i]<65 || a[i]>90){
             break;
         }
-		int j;
-        for(j=0;j<10;j++){
-            if (a[i] == num[j]){
-                count[i]=count[i]+1;
-                printf("*");
-            }
-        }   
+        i++;
+        
     }
-    for(i=0;i<10;i++){
-        if(count[i]>=1){
-            printf("%d : %d개\n",num[i],count[i]);
+    for(int j=0;j<i;j++){
+        for(int k=0;k<26;k++){
+            if(a[j]==eng[k]){
+                count[k]+=1;
+            }
         }
     }
-
+    for(int i=0;i<26;i++){
+        if(count[i]>=1){
+            printf("%c : %d개\n",eng[i],count[i]);
+        }
+    }
+    
     return 0;
 }
