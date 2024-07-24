@@ -1,0 +1,60 @@
+Title: To block
+================================
+if문
+	- 가급적 원하는 조건을 첫번째로
+	- if (() && ()) 일때도 첫번째에서 최대한 바로 걸러지도록 코드짜기
+	- if문도 적당히 조건 나눠서 큰 분할 작은분할 되도록. 빠르게 찾기위해.
+	
+	
+switch문
+	- case에 break가 없으면 쭉 내려가고, 
+	- break있으면 블럭을 빠져나감.
+	
+	
+반복문	
+	[for문]
+	1. count looping 
+		N-loop!
+	2. array access!
+		iterate array
+	--> ★for문 조건안에서 int그런 정의 안됨!!
+		
+	[do-while문]
+		whiel이 거짓이어도 do에서 1번은 실행하도록 함. 
+				
+	[while문]
+		참인동안 실행문을 반복
+		
+	[break문]
+	: 자기가 속한 반복문만 빠져나감.
+		- 하나만
+	: if문 안에 break가 있다면 반복문이 나올때가지 빠져나감. if문만 나가는건 아님.
+	
+	[continue문]
+	: 자기가 속한 블럭을 첨부터 다시시작
+	
+	[무한반복문]
+		- while(1) , while(FOREVER) 
+		- for(;;)
+	
+	
+	
+★ 중요개념
+	func()
+	{
+	@head- DATA
+		int i;
+	------------------
+	@body - Algotithm
+		i++;
+		
+	@DATA 선언/ 정의 (X)
+	}
+
+Title : To expression vs. statement
+=====================================
+	구문(expression)
+
+	문장(statement)
+
+

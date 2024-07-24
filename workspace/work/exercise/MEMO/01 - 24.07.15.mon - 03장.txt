@@ -1,0 +1,141 @@
+03장
+
+1. 선언
+	type identifier;
+	{
+		int i; //stack sizeof(int)
+	}
+	
+2. 정의
+	type identifier=init value;
+	{
+		int i =123;
+	}
+	
+===============
+c = 3 ; //c " L-value " 
+	
+	
+	
+Title : To type
+===============
+#include <stdint.h>
+ 
+	int8_t //signed char
+	uint8_t //unsinged char
+	
+	
+	a = 4294967295;        // 큰 양수 저장
+//	a=0xFFFFFFFF;(Msb=1) -> negative!
+		(2^32 -1)
+		
+			
+✨문자열 배열에 저장✨
+==================================	
+char chararry[3 or 빈칸]={ char,char,char);
+
+char astr[]-={'h','e','l','l','o',0}; 
+char bstr[] = "hello";
+char *cstr = "hello";
+-------------
+bstr="world";	//x  ->bstr은 변수 아니고 상수임. 컴파일 안됨.
+bstr[0]=0;		//o
+
+cstr="world";   //o  ->cstr은 변수이다.
+cstr[0]=0;		//x
+-------------
+astr[4]=0;//o
+bstr[4]=0;//o
+cstr[4]=0;//x
+
+
+=====
+cmd
+- section보는법
+objdump -h a.exe
+
+
+========================================
+변수 선언/정의
+
+(qualifier) type identiier (=i.v);
+
+const int i=123;
+i=456; //컴파일 X
+
+int *pi;
+pi=&i; //pi가 i의주소값을 가지고 있음
+*pi=456; //i에 456을 넣는것, i는 cosst 
+
+printf("%d",i); //?
+scanf("%d%lf",&age,&height); // ---> scanf는 &필수!!
+
+
+
+
+==========================================
+==========================================
+04장 연산자
+
+
+Title : To for
+=================
+	조건
+		
+		for(int i=0;i<99;i++)
+		{
+			do ...
+		}
+		
+	if 문 관계연산자'==' 주의
+	
+	논리연산자
+			&&(and), ||(or), !(not)
+	
+	형 변환 연산자
+		1.	(type)변수이름
+		2.	정수 + 실수 = 실수 + 실수	
+	
+	sizeof 연산자
+		sizeof(변수이름)  --> 변수를 저장하는데 필요한 메모리 계산해줌.
+	
+*void는 type이 아니다.
+
+	복합대입연산자
+		+=
+		
+	<비트연산자>
+	EX)
+	#include <stdio.h>
+
+	int main(void)
+	{
+		int a = 10;			// 비트열 00000000 00000000 00000000 00001010
+		int b = 12;			// 비트열 00000000 00000000 00000000 00001100
+
+		printf("a & b : %d\n", a & b);
+		printf("a ^ b : %d\n", a ^ b);
+		printf("a | b : %d\n", a | b);
+		printf("~a : %d\n", ~a);
+		printf("a << 1 : %d\n", a << 1);
+		printf("a >> 2 : %d\n", a >> 2);
+
+		return 0;
+	}
+	
+	--> 결과
+	a & b : 8
+	a ^ b : 6
+	a | b : 14
+	~a : -11
+	a << 1 : 20
+	a >> 2 : 2
+
+	<연산자 우선순위>
+		포인터와 관련
+		1차연산자, 단항연산자 중요
+			- 1차연산자 : () , [], ' , ->
+			- 단항연산자: -, ++, --, ~, !, *(포인터연산자), &(어드레스 연산자), sizeof(type)
+				단한연산자는 방향이 <---- 이방향으로 계산!
+
+

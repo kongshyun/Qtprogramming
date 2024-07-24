@@ -1,0 +1,129 @@
+0715 Day1
+- 파일 설치
+- 01-02장
+
+
+- 예제 열기 -
+1. type 파일이름.c
+2. gcc 파일이름.c
+3. dir(생략가능)
+4. a.exe
+
+devenv.bat
+시작하기전 항상 폴더안에서 명령프롬프트에서 위 명령어 쳐줘야 gcc 가능.
+
+
+gcc -m32 hello.c   
+
+
+- c언어 2장 -
+\n : 바로 아래줄로 감
+\r : 아래줄의 제일 앞단으로 감. (캐리지 리턴)
+\t : tap
+	
+1. integer
+
+	bool	true/false
+	
+	(unsigned/signed)char  - 1B
+	short - 2B
+ 	int   - 4B
+	long   - 2B
+	
+	int8_t
+	int16_t
+	int32_t
+
+2. real number
+	float : 4B	-	3.141592
+	double : 8B
+	
+	unsigned float
+	
+		
+3. 상수 표현법
+(c는 2진수 지원 x)
+10진수 12
+8진수 014
+16진수 0xc(2진수1100)
+
+4. ✨문자와 문자열 상수 표현법
+
+문자 
+	character   -> ''
+문자열
+	string    -> ""
+	
+printf("%c", 'A'); //"%d"이면 65 , "%c"이면 A ,,,,,작은따옴표: 아스키 코드를 읽음
+
+큰따옴표: 그 따옴표 안에있는 주소값을 리턴한다. 포인터와 관련.
+--> 주소가 나오므로 4바이트가 나옴.
+
+printf("%c","A");  //
+printf("%d","A");  //
+printf("%s","A");  //A ( 1바이트씩가져온다.null이 나올때까지 )
+
+
+5. 계산 (변수형 중요)
+ 두 항의 변수 정의가 같아야함.
+- 	printf(" sizeof : %d\n", sizeof(1));      -> 결과 4
+-	printf(" sizeof : %d\n", sizeof(1.0));    -> 결과 8
+ 
+ 
+int c;
+int a;
+	c	=	a	+	1.;
+ (int) = (int) + (int)(double)
+ 
+-----------------------------------
+EX)
+int c;
+int a=1;
+	c	=	a / 2 * 3.14; // a/2는 0임 int로 바꿔야하니까
+	
+	2*3.14 이면 double이 크니가 큰 그릇에 맞춤.
+	
+	printf("%d",c); // -->결과 0
+	
+--> 원하는 대로 하고싶으면
+	double c;
+	itn a=1;
+	c	=	a/2. *3.14;  // --> 2뒤에 . 을 찍어줌 (묵시적 형변환)
+or
+	c	=	(double)a/2 * 3.14 
+	
+	printf("%f",c)
+
+
+----------------------------------
+✨02-2장
+
+char c =0x12; // (1바이트)
+0b 0001 0010
+
+int i= 0x12345678; // (4바이트)
+
+0b xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx
+
+-------------
+signed char sc=0x12;   // -128~-1,0~127 
+	-->0b S000 0000    (제일 앞의 숫자를 양수음수 지정으로 사용)
+	-->0b 1xxx xxxx  
+	
+	sc=1;  // 0b 0000 0001
+	sc=-1; // 0b 1111 1111 //1's "1's-complement"
+	
+	정수에 대한 음수 표현법은 2의 보수로 만든다. 
+	
+unsigned cahr uc=0x12;    // 0~255
+
+
+
+음수 :
+	int i =1; //signed int 
+	0b S000 0000
+	
+	
+=============================
+03장
+

@@ -1,0 +1,193 @@
+DAY2 24.07.16
+09장 포인터
+
+Title : To pointer
+=================================
+	int i =123; // i의 정체는 int형 변수
+	
+	int a[4] ; // a의 정체는 1차원 배열(0th el's adr)
+	
+	int aa[3][4]; //
+	
+	a[0]=100;     ==   *a=100;    //같음.
+	
+	int *p ;  // p의 정체는 1차원 포인터 (변수)
+	int **pp; // p의 정체는 2차원 포인터 
+	int ***ppp; // p의 정체는 3차원 포인터
+	int p ;	// 0차원 포인터 
+	
+	
+	
+	p = &i ; //Okay
+	
+	*p=456;
+	printf("%d",i); //456
+	
+	*p 
+	★ &i 의 정체는 ? : 1차원 포인터 상수 
+	
+	(int*)=(int* const)   // 둘다 int* 형 이어야함.
+	
+	
+Title : To Pointer 성향
+======================================
+
+1. 좌향
+	<--------
+	1차원은 주소 쪽으로 감.
+
+2. 우향
+	--------> Data
+	
+	i=456;
+	printf("%d"
+	
+	0차원은 우향 . 
+
+
+
+Title: To pointer operator
+========================================
+
+head와 body에서 서로 쓰임.
+
+
+		&(C에서는 안씀 .)
+		* (identifier정체성을 pointer로 만든다.) 
+		[] (identifier정체성을 배열로만든다.)포인터상수 
+	
+	@head
+	----------------
+	@body
+	
+		&
+		*
+		[]
+ 
+
+	* : indirect reference operator.
+		aka, de-reference operator.
+		
+	* vs []
+	
+{
+		identifier's 정체성의 정의  -> 포인터 /배열 
+		
+	int *p ; //p ? --> 1차원 포인터 변수
+	int a[3] ; //a? --> 1차원 배열 상수
+	
+	int **xxxx[2][3] ; --> xxxx?
+	xxxx :		4차원	//배열
+	*xxxx :		3		=0	//배열
+	**xxxx :	2		=0  //포인터변수
+	***xxxx: 	1		=0  //포인터변수
+	****xxxx:	0		=0  //포인터변수
+	
+	xxxx[0] == *xxxx  
+	xxxx[0][0] == **xxxx 
+	xxxx[0][0][0] == ***xxxx 
+	xxxx[0][0][0][0] == ****xxxx 
+	
+	
+	int* x[2]; // --> *보다 []가 이겨서, x의 정체는 배열이다.
+	
+	
+	
+	
+	@head
+		
+	-----------------
+	
+	@body
+		xxxx=0; // x 
+		*xxxx =0; // ?
+		
+			--> = xxxx[0]
+		xxxx[0][1] =0; // ?
+		*xxxx[2] =0; //?
+	
+		p = 	// 이 형태로 사용 가능.
+		a = 	// 이 형태로 사용 불가능.
+		
+		*p	;indirect reference "간접참조 연산자"
+		 
+		a[2]	;indexing operation  "배열참조연산자"
+		
+}
+
+
+
+---------------------------------
+DAY3 07.17.수
+
+
+[준비]
+cd exercise
+devenv.bat
+gcc -S hello.c
+
+
+CPU입장에서 가장 빠른 메모리는 ? register  --> 바로 가까이에서 가져올수 있어서
+ ( CPU안에 register있음 )
+Title: To & ?
+
+===========================================
+{
+
+	EX>
+	
+	register int i=123;  // --> 이렇게 해주면 메모리가 스택에 잡히는게 아니라
+								register에 잡힌다.
+								register는 주소 없음.
+								
+	printf("%d",   &i );   // --> 컴파일 안됨. 
+	
+	--------------------------------------------------
+	
+	* : head 에서는 포인터로 .
+	* : body 에서는 간접찹조연산자로.
+	
+
+Title  To const of pointer
+{
+	const int ci=123; //
+	
+	const int *p = 100;
+	int const *p
+	
+	
+	P=0; // o 
+	*p=0 // x
+	
+	int const *p =100;
+	int const * const p =100; //o
+	
+	int * o= *cp;
+	
+	
+	
+	0x12340000;  // : integer
+	(int *) 0x12340000 ; // ? 포인터 상수
+	
+
+	char *pc;
+	int *pi;
+	double *pd;
+		--> 3개모두 사이즈 4바이트
+	
+	pc = (char *)0x12340000 ; // 4바이트이므로 위에 넣을수 있음.
+	pd = (double *)0x00001234 ; //      "
+	
+}
+
+- 포인터를 쓰는 이유:
+	주소값을 가지고 있으므로 주소를 이용할수있음.
+	ex) swap함수에 매개변수로 그냥 넣으면 함수가 끝난후 스택을 나가면서 그 값이 날아감. 
+		하지만 , 주소로 매개변수를 지정하면 저장.
+		swap(int x, int y ); // 안됨.
+		swap(int *pa, int *pb); //됨.
+		
+		함수 호출할떄 : swap(&a, &b);
+	
+	
+	

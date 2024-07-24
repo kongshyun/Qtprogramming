@@ -1,0 +1,465 @@
+[C언어] 1주차- DAY5
+[16장 동적 메모리 할당]
+
+[malloc] 
+	malloc함수는 (void*)형을 반환.
+	 -> 원하는 포인터 형으로 형변환 해야함.
+	 ->EX)
+		pi = (int *) malloc(sizeof(int));
+	 -> heap에 할당한다.
+	 -> malloc함수는 실패하면 null을 형성함.
+	 
+calloc함수
+	 
+ 
+ 
+ 
+ 
+ [17장]
+ 
+ Title: To data type in c
+ ====================================================
+ 1. simple data type
+	char,int,float ......	
+
+ 2. aggregation type
+	1. array
+	
+	2. sturct
+	
+		func (a);
+		func (s);
+		
+		a1 = a2 ; //
+		s1 = s2; //
+	
+ 
+ 
+Tite : To padding
+=====================================================
+
+	{	
+		char 1
+		 pad 3
+		int  4
+		char 1
+	
+	}
+	
+	why use padding?
+		faster fetch
+		coast?
+		
+		
+		prons --> speed
+		cons --> memory
+
+
+		
+Title : To linked list ,,자기참조구조체
+=======================================================
+
+	자료구조
+		- 리스트
+			1. 배열 리스트로 구현
+			2. 링크드 리스트(연결리스트 p.529)
+			
+Title: To Union
+==========================================
+
+struct bits_tags {
+	unsigned int a: 8
+	unsigned int b: 8
+	unsigned int c: 8
+	unsigned int d: 8
+
+}
+
+struct register_tag {
+	
+	struct bits_tag B;
+	unsigned int U;
+	
+}
+
+
+	{
+		union register_tag myregister;
+		myregister.U = 0x12345678;
+		pritnf("%d",myregister.B.c);
+	}
+			
+		
+		
+		
+		
+		
+Title : To typedef
+=============================================
+	
+	int8_t a;	
+	
+		위 처럼하는것보다 나이에 대해 변수를 지정하고 싶을때,
+		age_t a; 이렇게 하는게 더 편하다.
+		typedef struct student student_t;
+	
+	typedef 구조체이름 새자료형이름;
+	{
+		struct student yuni;
+		-> typedef struct student student_t;
+	
+- 아래 형태로 쓰면됨.	
+	struct student {
+		int age;
+		int major;
+		
+	}student_t
+	student_t yuni;
+		
+
+
+Title : To file
+==============================================
+
+	1. 고수준 파일 입출력
+		FILE *fp;
+		fp=fopen("....", "rw");
+			f-
+			fprintf(""
+		
+	2. 저수준 파일 입출력
+		int fd = open ("...." , O_flag, permission);
+		
+		read/write/close ....
+		
+		file operation on os( ie,linux )
+		
+		
+	File을 쓰려면 OS가 있어야함.
+	
+	
+		
+Title : To txt vs. bin
+=============================================
+
+	Unix
+		ascii code
+			10 - \n
+			13 - \r
+		binary	
+			
+			
+			
+ 			
+	Windows
+		textmode
+			printf(" hello" \n); \n ==> \n\r 
+		
+	"wb" 
+		fwrite ( struct(data));
+		
+		"wt" "w"
+			text file 
+			
+구글에 이렇게 man 뭐시기 치면 리눅스 메뉴얼 나옴
+  - > "man 3 printf" or "man 1 printf"
+ 
+
+Title: To inline function
+=================================================
+
+inline int sum( int a, int b)
+{
+	return a+b;
+}
+
+{
+	a=sum(c,d);
+}
+
+
+
+-------------------------------------------------------
+★		
+예제 19-8
+★
+
+type main.c		
+type sub.c
+
+
+gcc main.c 
+     -> 에러발생
+undefined reference to `input_data'
+: 컴파일시 자주 나오는 에러 메세지
+
+
+gcc -c main.c
+: 컴파일 명령어
+
+gcc -c sub.c
+
+gcc main.o sub.o -o calc.exe
+-------------------------------------------------------	
+
+extern 
+	- 무조건 global
+	- 실체가다른데 있는것
+	- 함수는 extern안해도되는데 변수는 해야함.
+	
+-------------------------------------------------------
+
+헤더파일 중복 문제 
+( 헤더가드로 해결한다. 
+	C에서 헤더파일 만들대는 무조건 p.614처럼	
+	#define _POINT_H_
+	#ifndef _POINT_H_
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

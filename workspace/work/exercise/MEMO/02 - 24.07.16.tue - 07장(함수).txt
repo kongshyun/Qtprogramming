@@ -1,0 +1,44 @@
+07장 함수
+
+Title : To variable scope
+=========================================
+
+int func(int x, int y)
+{
+
+}
+
+
+
+1. scope
+	1. 전역( global scope variable) -> 어떤 블럭 안에도 속해있지 않은.
+		out side of ()
+	
+	2. 지역 ( local scope variable)
+		inside of ()
+		
+	3. 함수 ( function scope variable)	
+		function ( ... ) 함수 괄호안에 있는 애들.
+
+- 반환값이 없으면 매개변수 안에 void 입력
+
+
+
+- ☆ 재귀호출함수
+: 자기자신을 부르는
+
+Title : To recursive function
+=============================================
+
+	0. call itself.
+	1. pros 
+		기가막힌 알고리즘 생성 가능
+	2. cons
+		위험.(stack overflow)
+		
+		
+		
+Title : To factorial
+=============================================
+		
+		

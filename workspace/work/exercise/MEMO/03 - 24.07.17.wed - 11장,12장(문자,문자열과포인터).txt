@@ -1,0 +1,103 @@
+[11장]문자
+
+대문자 소문자바꾸기 
+A 65
+a 97  (+32  ==2^5 == 1<<5)
+
+	--> 대문자와 소문자 차이 5번비트, 5번비트를 키면 대문자가 소문자 됨. 키면 소문자가 대문자.
+	
+	
+
+- scanf
+	char : %c
+	
+--------------------------------------------------------
+[12장] 문자열과 포인터
+
+%p 주소출력, %X쓰면됨.
+
+printf("%p\n","apple");
+	ㄴ> "apple"의 타입은 char*
+	ㄴ> 주소는 '1000'
+printf("%p\n","apple"+1);
+	ㄴ>char* + int 이므로 char*가 더 쎔. 
+	ㄴ>따라서 다음 문자 라는 뜻 '1001'
+
+printf("%c\n",*"apple");
+	ㄴ>'*'을 붙이면 차원이하나 내려감.
+	ㄴ>*(char*)  -> 0차원이됨 -->char 가 됨.
+	ㄴ> 'a'
+printf("%c\n",*("apple"+1));
+	ㄴ> *(char*+1001)
+	ㄴ> p
+	
+printf("%c\n","apple"[2]);
+	ㄴ> (char* + 2)세번재문자 p
+	
+	
+	
+Title: To pointer + string
+============================================
+char + str = "hello";
+
+
+"hello"[2] == *("hello" + 2)
+				char* + (char*)2
+				1000  +  2
+				1002
+				
+
+
+int a[] = {10,1,2,3,4};
+
+printf("%d",  1[a]);  //o
+
+a[N]  == *(a + N) == *(N + a) == N[a]
+
+
+---------------------------------
+
+
+void func(char *str)
+{
+	str[4] = '\0';
+}
+
+int main(void)
+{
+	char mystring[]="hello";
+	func("mystring");  //o
+	//func("hello");    //x
+	printf("%s", mystring);
+}
+
+   --> func("hello")도 할수 있는 방법은?
+		ㄴ> 
+			const활용
+			
+			
+-----------------------------------
+
+
+Title: To stdio
+======================================================
+
+		   FDT		 PC				  embedded
+				  ----------	     -----------
+stdin		0	-> keyboard			UART(serial)	by scanf
+stdout		1	-> monitor			UART(serial)	by printf
+stderr		2	-> monitor			UART(serial)	by perror
+
+
+
+=======================================================
+
+
+
+	
+	
+
+
+
+
+

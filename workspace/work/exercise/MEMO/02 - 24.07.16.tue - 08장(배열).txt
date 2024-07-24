@@ -1,0 +1,138 @@
+Title : To array
+=====================================
+배열: memory, 동일한 type, 연속적
+
+
+{
+	int a[5];
+	int b[3] = {int, int, int };    ->각 요소를 element라함.
+	//2차원배열
+	int aa[3][4];
+	int aaa[2][3][4];
+	
+	b[0]==10;
+	
+	
+	
+	
+	
+	
+	EX)
+	int b[3]={10,1,2};
+	
+	b[0]==10;
+	
+-----------------------------------------------	
+CRT가 해주는 것
+
+- int gi =1; // --> / .DATA section에 저장. // copied to RAM by CRT
+- int gni ;// --> .BSS  초기화 하지 않은 전역변수는 0으로 정해짐. // zero-copy Init by CRT.
+
+	EX)
+	
+	int ga[5];//
+	{
+		int a[5];
+		printf( a[0]); //쓰레기 값이 찍힘.
+		printf( ga[0]); //0
+	}
+
+}
+
+Title : To memory
+=======================================
+1. 비휘발성
+	
+	- ROM
+	- 값 유지 ... 끄->켜(1->1)
+	- ROM( progam code <- download)
+		- Text( .Rdata = .const)
+		- Data
+		- BSS
+	
+	
+2. 휘발성
+	- RAM
+	- 날라가 ... 끄 -> 켜(1->0)
+	
+{
+
+	int gi =1; // .DATA section
+	int gni ; // .BSS -->CRT -->ZI
+	int ga[5]; // .BSS
+
+}
+
+	
+------------------------------------------------
+[] :배열참조연산자
+
+Title: sizeof
+============================================
+
+sizeof연산자를 활용한 배열처리
+{
+	type id =iv;
+	int  i =123;
+	
+	int a[3] ={int, int, int };
+	int[3] a ={int, int, int };   ---> C에서는 사용이 안되는 타입. C++은 됨.
+	
+	type id 
+	
+	type = int[3]
+	id = a
+
+	int a[5];
+	sizeof (a[0]) ===4
+	sizeof (a   ) === 4*5 =20
+	
+	
+	
+	//C에 있는것 
+		1. 표준식   ---> 배열을 제대로 이해하기위해 이것을 활용.
+			type id =iv;
+			int[3] a;
+			sizeof(a)= int 3개 니까 12bytes
+			
+		2. 표현식
+			문법적으로 올바른식;
+			int a[3];
+}	
+
+Title: To 괄호
+===============================================
+{}:braces
+():parenthesis
+[]:bracket
+<>:square bracket 
+
+
+scanf함수를 사용할대는 배열명 그대로 사용.
+  -> 배열이름이 그 주소 이므로 scanf쓸때 &안써도됨.
+  
+  
+ Title: 포인터배열 등가식
+ To Pointer array equation
+ ================================================
+ A[N] == * (A+N)
+ 
+ ex,
+	a[3] ==*(a+3)// 문법적으로 동일 
+ 
+	int a[5]={10,1,2,3,4};
+	
+	printf("%d",&a[0]);	//1000
+	printf("%d",a);	//1000
+	printf("%d",&a);	//1000
+	printf("%d",a[0]);	//10
+	
+	a[0] == *(a+0) == *(a) ==*a
+	
+	&a[0] == &*a == a = 
+ 
+
+
+	
+---------------------------
+
