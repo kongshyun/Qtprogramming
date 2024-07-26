@@ -1,0 +1,4 @@
+﻿  0726test.cpp
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0726\0726\0726test.cpp(350,5): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0726\0726\0726test.cpp(357,5): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0726\0726\0726test.cpp(369,5): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.

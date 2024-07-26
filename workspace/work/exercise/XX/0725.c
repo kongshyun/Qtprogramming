@@ -1,34 +1,35 @@
 #include <stdio.h>
 
+int main(){
+    int N;
+    scanf("%d",&N);
 
-int main()
-{
-    int a[3][3];
-    int b[3][3];
-    char name[100];
-    for(int i=0;i<3;i++){
-        scanf("%s",name);
-        for(int j=0;j<3;j++){
-            scanf("%d",a[i][j]);
+
+
+    char eng[26];
+    for(int i=0;i<26;i++){
+        eng[i]=65+i;
+    }
+
+    char semo[N][N];
+    int a=0;
+    for(int i=N;i>0;i--){
+        for (int j=N;j>0;j--){
+            for(int k=0;k<N-i;k++){
+                semo[i][k]='0';
+            }
+            semo[i][j]=eng[a];
+            printf("%c %c ", semo[N-4][N-4]);
+            a++;
+            if(a>26) a=0;
+        }
+    }
+
+    for(int i=0;i<N;i++){
+        for (int j=0;j<N;j++){
+            printf("%s ",semo[i][j]);
         }
         printf("\n");
     }
-
-    for(int i=0;i<3;i++){
-        scanf("%s",name);
-        for(int j=0;j<3;j++){
-            scanf("%d",b[i][j]);
-        }
-        printf("\n");
-    }
-
-    for(int i=0;i<3;i++){
-        for(int j=0;j<3;j++){
-            printf("%d ",a[i][j]+b[i][j]);
-        }
-        printf("\n");
-    }
-    
-
     return 0;
 }
