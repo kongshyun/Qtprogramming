@@ -1,2 +1,4 @@
-﻿  0729.cpp
-  0729.vcxproj -> C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0729\Debug\0729.exe
+﻿  04practice.cpp
+0729.obj : error LNK2005: "public: double __thiscall Circle::getArea(void)" (?getArea@Circle@@QAENXZ)이(가) 04practice.obj에 이미 정의되어 있습니다.
+0729.obj : error LNK2005: _main이(가) 04practice.obj에 이미 정의되어 있습니다.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0729\Debug\0729.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.
