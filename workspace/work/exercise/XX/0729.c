@@ -3,15 +3,14 @@
 
 int main()
 {
-    int a;
+    char a;
     while(1){
-        scanf("%c",&a);
-        
+        scanf(" %c",&a);
         if(a=='0'){
-            printf("%c -> %d",a,a);printf("\n");
+            printf("%c -> %d\n",a,a);
             break;
         }
-        printf("%c -> %d",a,a);printf("\n");
+        printf("%c -> %d\n",a,a);
     }
     return 0;
 }
