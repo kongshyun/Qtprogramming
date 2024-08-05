@@ -1,16 +1,23 @@
 #include <stdio.h>
 
-
-int main()
+int main ()
 {
-    char a;
+    
+
     while(1){
-        scanf(" %c",&a);
-        if(a=='0'){
-            printf("%c -> %d\n",a,a);
+        char a;
+        scanf("%c",&a);
+		getchar();
+        if((a>=97 && a<=122) ||( a>=65 && a<=90)){
+            printf("%c\n",a);
+        }
+        else if(a>=48 && a<=57){
+            printf("%d\n",a);
+        }
+        else{
             break;
         }
-        printf("%c -> %d\n",a,a);
+        //while ((getchar()) != '\n');
     }
     return 0;
 }
