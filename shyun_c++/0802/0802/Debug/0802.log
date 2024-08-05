@@ -1,0 +1,12 @@
+﻿  0802.cpp
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.h(9,30): warning C4290: 함수가 __declspec(nothrow)가 아님을 나타내려는 경우를 제외하고 C++ 예외 사양은 무시됩니다.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.h(10,23): warning C4290: 함수가 __declspec(nothrow)가 아님을 나타내려는 경우를 제외하고 C++ 예외 사양은 무시됩니다.
+  MyStack.cpp
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.h(9,30): warning C4290: 함수가 __declspec(nothrow)가 아님을 나타내려는 경우를 제외하고 C++ 예외 사양은 무시됩니다.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.h(10,23): warning C4290: 함수가 __declspec(nothrow)가 아님을 나타내려는 경우를 제외하고 C++ 예외 사양은 무시됩니다.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.cpp(3,27): warning C5043: 'MyStack::push': 예외 사양이 이전 선언과 일치하지 않습니다.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.h(9): message : 'MyStack::push' 선언을 참조하십시오.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.cpp(10,20): warning C5043: 'MyStack::pop': 예외 사양이 이전 선언과 일치하지 않습니다.
+C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\0802\MyStack.h(10): message : 'MyStack::pop' 선언을 참조하십시오.
+  코드를 생성하고 있습니다...
+  0802.vcxproj -> C:\Users\hancom\Desktop\shyun_veda\shyun_c++\0802\Debug\0802.exe
