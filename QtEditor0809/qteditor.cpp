@@ -24,6 +24,7 @@
 QtEditor::QtEditor(QWidget *parent): QMainWindow(parent)
 {
     mdiArea= new QMdiArea(this);
+    connect(mdiArea,&QMdiArea::subWindowActivated,this,&QtEditor::setFontWidget);
     setCentralWidget(mdiArea);
 #if 0
     QTextEdit *textedit = new QTextEdit(this);
@@ -42,10 +43,16 @@ QtEditor::QtEditor(QWidget *parent): QMainWindow(parent)
     addDockWidget(Qt::RightDockWidgetArea,dock);
     dock->setWidget(w);
 
+    QMenu *formatMenu = new QMenu("&Format",this);
+    menubar -> addMenu(formatMenu);
+
+    QMenu *alignMenu = new QMenu("&Align",this);
+    formatMenu -> addMenu(alignMenu);
+
     //textedit=new QTextEdit(this);
 
-  //  toolbarMenu ->addAction(dock -> toggleViewAction());
-/*
+    //  toolbarMenu ->addAction(dock -> toggleViewAction());
+    /*
     //Make New File
     QAction *newAct = new QAction (QIcon("new.png"),"&New",this);
     newAct ->setShortcut(tr("Ctrl+N"));
@@ -82,7 +89,7 @@ QtEditor::QtEditor(QWidget *parent): QMainWindow(parent)
     exitAct -> setStatusTip(tr("EXIT"));
     connect(exitAct,SIGNAL(triggered()),qApp,SLOT(quit()));
 */
-//-------------------액션의 쉬운 구현--------------------------------------------
+    //-------------------액션의 쉬운 구현--------------------------------------------
 
 
     QAction *newAct = makeAction(":/images/new.png",tr("&New"),QKeySequence::New,tr("make new file"),this,SLOT(newFile()));
@@ -101,7 +108,7 @@ QtEditor::QtEditor(QWidget *parent): QMainWindow(parent)
     fileMenu -> addAction(printAct);
     fileMenu -> addAction(exitAct);
 
-//--------------------Editmenu----------------------------------------------
+    //--------------------Editmenu----------------------------------------------
     QAction *undoAct = makeAction(":/images/undo.png",tr("&Undo"),QKeySequence::New,tr("undo"),textedit,SLOT(undo()));
     QAction *redoAct = makeAction(":/images/redo.png",tr("&Redo"),QKeySequence::New,tr("redo"),textedit,SLOT(redo()));
     QAction *copyAct = makeAction(":/images/copy.png",tr("&Copy"),QKeySequence::New,tr("copy"),textedit,SLOT(copy()));
@@ -121,7 +128,7 @@ QtEditor::QtEditor(QWidget *parent): QMainWindow(parent)
     editMenu -> addAction(zoominAct);
     editMenu -> addAction(zoomoutAct);
 
-//-------toolBar----------------------------------------------------------------------------------
+    //-------toolBar----------------------------------------------------------------------------------
 
     QToolBar *fileToolBar = addToolBar("&File");
     fileToolBar -> setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -148,13 +155,17 @@ QtEditor::QtEditor(QWidget *parent): QMainWindow(parent)
     editToolBar -> addAction(zoominAct);
     editToolBar -> addAction(zoomoutAct);
 
-//------상태바추가-------
+    //------상태바추가-------
     QStatusBar *statusbar = statusBar();
     QLabel *statusLabel=new QLabel(tr("Qt Editor"),statusbar);
     statusLabel -> setObjectName("StatusLabel");
     statusbar->addPermanentWidget(statusLabel);
     statusbar ->showMessage("started",1500);
-//---------------------
+
+
+
+
+    //---------------------
     fileToolBar -> setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QMenu *windowMenu = menubar -> addMenu("&Window");
     QMenu *toolbarMenu = windowMenu -> addMenu("&Toolbar");
@@ -175,7 +186,9 @@ QtEditor::QtEditor(QWidget *parent): QMainWindow(parent)
     formatToolbar -> addWidget(fontComboBox);
     formatToolbar -> addWidget(sizeSpinBox);
 
-//-----------------------------------------------------------------------------------------
+
+    //QAction *activeAct = makeAction(":/images/undo.png",tr("&Undo"),QKeySequence::New,tr("undo"),mdiArea,SLOT(activateNextSubWindow()));
+    //-----------------------------------------------------------------------------------------
 }
 
 template<typename T>
@@ -192,9 +205,9 @@ QAction *QtEditor::makeAction(QString icon,QString text,T shortCut,QString toolT
     return act;
 }
 
-/*
+
 template<typename T,typename Functor>
-QAction *QtEditor::makeAction(QString 0icon,QString text,T shortCut,QString toolTip, QObject* recv,Functor lambda)
+QAction *QtEditor::makeAction(QString icon,QString text,T shortCut,QString toolTip, QObject* recv,Functor lambda)
 {
     QAction *act=new QAction(text,this);
     if(icon.length())
@@ -205,11 +218,13 @@ QAction *QtEditor::makeAction(QString 0icon,QString text,T shortCut,QString tool
     act ->setToolTip(toolTip);
     connect(act,&QAction::triggered,this,lambda);
     return act;
-}*/
+}
 
 QtEditor::~QtEditor() {
     //delete textEdit;
 }
+
+
 
 QTextEdit *QtEditor::newFile(){
     qDebug("Make New File");
@@ -223,7 +238,18 @@ void QtEditor::newFile()
     qDebug("Make New File");
 
 }*/
-
+void QtEditor::setTextFont(QFont font)
+{
+    QTextEdit *textedit = (QTextEdit*)mdiArea -> currentSubWindow() -> widget();
+    textedit -> setCurrentFont(font);
+}
+void QtEditor::setTextSize(qreal size)
+{
+    QTextEdit *textedit = (QTextEdit*)mdiArea -> currentSubWindow()->widget();
+    QFont font = textedit -> currentFont();
+    font.setPointSizeF(size);
+    textedit -> setCurrentFont(font);
+}
 void QtEditor::openFile()
 {
     qDebug("open a File");

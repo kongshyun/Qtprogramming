@@ -23,10 +23,10 @@ private:
     QTextEdit *textedit;
     //QMenu *alignMenu;
     template<typename T>
-    QAction *makeAction(QString icon,QString text,T shortCut,QString toolTip, QObject* rect,const char* slot);
+    QAction *makeAction(QString icon,QString text,T shortCut,QString toolTip, QObject* recv,const char* slot);
 
     template<typename T, typename Functor>
-    QAction *makeAction(QString icon, QString text,T shortCut, QString toolTip,Functor lambda);
+    QAction *makeAction(QString icon, QString text,T shortCut, QString toolTip,QObject* recv, Functor lambda);
 
 public slots:
     QTextEdit *newFile();
