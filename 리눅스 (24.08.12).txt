@@ -1,0 +1,412 @@
+[virtualBox에 설치한 리눅스를 cmd에서 접속하기]
+
+ping 192.168.56.101
+ssh iam@192.168.56.101
+	SSH? > yes
+	password? > aboy
+
+
+iam@boy:~$ whoami
+iam
+iam@boy:~$ pwd
+/home/iam
+iam@boy:~$ echo $SHELL
+/bin/bash
+
+우리는 shell에서 작업. shell은 kernel과 사용자사이를 연결해주는
+
+super user로 쓰기
+	: iam@boy:~$ sudo -s
+[sudo] password for iam:
+root@boy:/home/iam# whoami
+root
+root@boy:/home/iam# exit
+exit
+
+---------------------------------------------------------------
+root@boy:~# pwd
+/root
+---------------------------------------------------------------
+pwd : print working directory 란 뜻
+cd : change directory
+
+su: switch user
+---------------------------------------------------------------
+Title: To system "admin"instration
+
+	admin:
+		- by super user(root)
+		+ 계정추가/ 삭제 변경....
+		1. useradd
+		2. userdel
+---------------------------------------------------------------
+Editor:
+	gedit 은 별로, vi 나 다른 편집기
+
+_
+	iam@boy:~$ date >> log
+			-> '>>' Redirection
+_
+	iam@boy:~$ cat log 
+			-> 💛cat: 파일 내용을 표시
+_
+	iam@boy:~$ `date`
+	Command 'Mon' not found, did you mean:
+	command 'pon' from deb ppp (2.4.9-1+1ubuntu3)
+	command 'mon' from deb mon (1.3.6-2)
+	Try: sudo apt install <deb name>
+			-> 어포스트로피 하면 문자열로 됨.
+	iam@boy:~$ echo `date`
+	Mon Aug 12 04:51:03 AM UTC 2024
+
+_
+hostname   <-- etc밑에 있음
+	iam@boy:~$ cat /etc/hostname
+	boy
+
+_
+도움말, 정보 보여줌
+	이름 --help
+
+
+_
+내가쓰는 우분투 궁금할때
+	iam@boy:~$ cat /etc/issue
+	Ubuntu 22.04.3 LTS \n \l
+
+_
+빈파일 만들기
+	iam@boy:~$ touch a b c
+	iam@boy:~$ ls
+	a  b  c  log
+
+_
+빈 디렉토리 만들기
+	iam@boy:~$ mkdir ad bd cd
+	iam@boy:~$ ls
+	a  ad  b  bd  c  cd  log
+	iam@boy:~$ ls -F
+	a  ad/  b  bd/  c  cd/  log
+_
+💛자세한 내용 보기 💛
+	ls -l
+ 		: 파일 디렉토리 볼수있 '/' 기호 붙여줌
+
+	alias
+
+_
+password
+	sudo -s
+	비번aboy입력
+	useradd -m sam
+	ls ..   (확인)
+	passwd sam
+		-> 비밀번호입력
+	exit
+
+_>>나와서 
+
+다시
+	iam@boy:~$ su sam
+	Password:
+	$ echo $SHELL
+	/bin/sh
+	$ whoami
+	sam
+		--> sam 계정으로 활동 가능
+
+_
+화면 지우기
+	: ctrl+l
+
+_
+
+<온라인 메뉴얼 :man>
+	iam@boy:~$ printf "Helloworld\n"
+	Helloworld
+
+
+[vi창으로 들어가기]
+man printf 
+	-> 탈출: q 
+
+_
+[명령어 정보 알기]
+	whatis [명령어]
+		-> ex ) 
+		iam@boy:~$ whatis ls
+		ls (1)               - list directory contents
+	whereis [명렁어]
+	which [명렁어]   -> 간단한whereis
+
+
+_
+[env]
+환경변수를 볼수있음
+	iam@boy:~$ env | grep SHELL
+	SHELL=/bin/bash
+
+_
+[ ]
+
+	iam@boy:~$ echo printf "helloworld\n" >> myprint
+	iam@boy:~$ cat myprint
+	printf helloworld\n
+	iam@boy:~$ ls
+	a  ad  b  bd  c  cd  log  myprint
+	iam@boy:~$ . myprint
+	helloworldniam@boy:~$
+
+
+	 chmod +x myprint
+	 	-> 실행할수 있는 권한을 주는 명령어
+	iam@boy:~$ chmod +x myprint
+	iam@boy:~$ ls -l myprint
+	-rwxrwxr-x 1 iam iam 20 Aug 12 05:43 myprint
+	iam@boy:~$ myprint
+	Command 'myprint' not found, did you mean:
+	command 'mypaint' from deb mypaint (2.0.1-2build1)
+	Try: sudo apt install <deb name>
+	iam@boy:~$ ./myprint
+
+
+_
+
+[PATH에 현재 디렉토리 새성해주기]
+	iam@boy:~$ PATH=$PATH:./
+	iam@boy:~$ echo $PATH
+	/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:./
+	iam@boy:~$ myprint
+	helloworldniam@boy:~$
+
+_
+[꼭대기 디렉토리 가기]
+	cd /
+
+[다시돌아가기]
+	iam@boy:/$ cd
+	iam@boy:~$
+_
+[파일지우기]
+	rm 파일이름
+[빈디렉토리지우기]
+	rmdir 디렉토리이름
+_
+
+[복사하기]
+	cp a ac
+		-> a 내용을 ac 로 복사
+[링크하기]
+	ln a al
+		-> a와al 은 연결
+
+
+		iam@boy:~$ echo world>> a
+		iam@boy:~$ cat a
+		hello
+		world
+		iam@boy:~$ cat ac
+		hello
+		iam@boy:~$ cat al
+		hello
+
+[확인하기 i 노드] -> a와 al은 번호가 같음
+	iam@boy:~$ ls -i
+	524299 a  524300 ac  524299 al  524301 b  524302 c
+
+	-> 파일의 실체 : i 노드
+
+_
+[링크]
+1. hard link
+	ln a la
+	-> 파일에만 링크를 걸수 있음.( link )
+
+2. soft link ( symbolic )
+	ln -s a as
+	->as도 a와 값이 같음. BUT i 노드가 다르다!! 다른파일이다.
+
+	-> ls- l 해보면, " as -> a "
+	-> 파일과 디렉토리에 링크를 걸수 있음.(link / dirs)
+
+_
+
+Title : To file type
+
+	- : normal file
+	d : dirs
+	c : character device file
+	b : block 	  device file
+	l : symbolic link	 file
+	s : socket 	file
+	p : pipe 	file
+
+
+
+_
+stat a
+	-> 파일에 대한 정보 볼수있음
+touch a (업데이트)
+stat a 
+	-> 파일의 날짜가 바뀜 (생성날짜제외)
+
+_
+[디렉터리 생성]
+mkdir
+mkdir -p 하면 중간 디렉토리 생성간으
+
+
+_
+[디렉터리 삭제]
+
+rm -rf 
+	-> 하위 디렉토리들 강제로 전부 삭제
+
+_
+[파일생성]
+
+touch a.txt
+	-> 파일 크기가 0인 이름만 있는 빈 파일을 만들어줌
+내용이 있을때 touch a하면 최신 업데이트해줌
+
+_
+[파일내용보기]
+cat a
+	-> a의 내용 볼수 있음.
+
+hexdump a 
+	-> 바이너리 파일을 볼수 있음.
+
+_
+[페이지단위로보기]
+
+more 파일이름
+
+[파일 앞부분만 보기]
+head -2 a
+	-> a의 앞 두줄만 보여줌
+
+[밑에서부터보기] tail -숫자 a
+_
+_
+[vi에서 파일 내용보기]
+
+less a
+
+_
+[단어세기]
+
+wc [-lws] 파일
+	-> l : 줄, w : 단어, s : 문자
+
+
+
+
+
+
+
+=====>
+핵심개념: 리눅스의 디렉터리는 루트로부터 시작하여 계층구조를 이룬다.
+
+---------------------------------------------------------------
+<<💗4장💗>>
+
+apt
+_
+Title : To aptitude (apt)
+=================
+apt-get update
+apt-get install
+sudo apt-get aboy
+sudo apt-get install tree
+
+_
+	iam@boy:~$ cp -a dir2 dir3
+	iam@boy:~$ ls
+	a  ac  al  as  b  bc  c  dir1  dir2  dir3
+	iam@boy:~$ tree
+	.
+	├── a
+	├── ac
+	├── al
+	├── as -> a
+	├── b
+	├── bc
+	├── c
+	├── dir1
+	│   └── b
+	├── dir2
+	│   └── b
+	└── dir3
+		└── b
+
+_
+[파일복사]
+
+//?????
+
+_
+[파일이동]
+mv 파일1.txt 파일2.txt
+	-> 파일1을 파일2 디렉토리로 이동
+
+
+_
+
+[디렉토리 이름변경]
+mv 파일1 파일2
+
+
+-
+[디렉터리 전체 삭제]
+
+rm [-ri] 디렉터리
+	-> ex. 
+		rm -ri test
+
+
+_
+
+[파일종류]
+file a 
+	-> 파일 종류 알려줌
+
+_
+
+[접근권한( permission mode )]
+
+접근권한 표현 : 8진수
+
+
+
+_
+
+[소유자변경 : chwon(change owner)]
+
+chwon 사용자 파일
+
+---------------------------------------------------------------
+
+ [예제 : 특정 단어가 들어간 파일을 찾고 싶을때]
+
+	iam@boy:~/dir1$ ls
+	b
+	iam@boy:~/dir1$ echo
+
+	iam@boy:~/dir1$ echo i love you >> b
+	iam@boy:~/dir1$ cat b
+	i love you
+	iam@boy:~/dir1$ cd ..
+	iam@boy:~$ grep -rn "love"
+	dir1/b:1:i love you
+	iam@boy:~$
+
+
+
+---------------------------------------------------------------
+
+리눅스종료 명령어 : sudo poweroff
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
