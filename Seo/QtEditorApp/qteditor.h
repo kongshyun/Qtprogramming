@@ -2,6 +2,7 @@
 #define QTEDITOR_H
 
 #include <QMainWindow>
+#include <QHash>
 
 class QAction;
 class QMdiArea;
@@ -31,6 +32,8 @@ private:
     QMdiArea *mdiArea;
     QFontComboBox *fontComboBox;
     QDoubleSpinBox *sizeSpinBox;
+    QMenu *windowMenu;
+    QHash<QAction*, QWidget*> windowHash;
 
 private slots:
     QTextEdit* newFile( );
@@ -51,5 +54,15 @@ private slots:
     void setFontWidget( );
     void setTextFont(QFont font);
     void setTextSize(qreal size);
+
+    /* format */
+    void setColor();
+    void setFont();
+    void alignText( );
+
+    /* help */
+    void about();
+
+    void selectWindow();
 };
 #endif // QTEDITOR_H

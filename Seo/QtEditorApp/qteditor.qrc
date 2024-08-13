@@ -18,5 +18,14 @@
         <file>images/undo.png</file>
         <file>images/zoomin.png</file>
         <file>images/zoomout.png</file>
+        <file>images/about.png</file>
+        <file>images/aboutQt.png</file>
+        <file>images/color.png</file>
+        <file>images/center.png</file>
+        <file>images/right.png</file>
+        <file>images/justify.png</file>
+        <file>images/left.png</file>
+        <file>images/font.png</file>
+        <file>images/file.png</file>
     </qresource>
 </RCC>

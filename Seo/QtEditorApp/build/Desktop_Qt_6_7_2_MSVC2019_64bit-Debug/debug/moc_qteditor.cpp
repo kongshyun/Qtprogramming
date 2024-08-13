@@ -54,7 +54,12 @@ constexpr auto qt_meta_stringdata_CLASSQtEditorENDCLASS = QtMocHelpers::stringDa
     "setTextFont",
     "font",
     "setTextSize",
-    "size"
+    "size",
+    "setColor",
+    "setFont",
+    "alignText",
+    "about",
+    "selectWindow"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -67,7 +72,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSQtEditorENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,21 +80,26 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSQtEditorENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  104,    3, 0x08,    1 /* Private */,
-       4,    0,  105,    3, 0x08,    2 /* Private */,
-       5,    0,  106,    3, 0x08,    3 /* Private */,
-       6,    0,  107,    3, 0x08,    4 /* Private */,
-       7,    0,  108,    3, 0x08,    5 /* Private */,
-       8,    0,  109,    3, 0x08,    6 /* Private */,
-       9,    0,  110,    3, 0x08,    7 /* Private */,
-      10,    0,  111,    3, 0x08,    8 /* Private */,
-      11,    0,  112,    3, 0x08,    9 /* Private */,
-      12,    0,  113,    3, 0x08,   10 /* Private */,
-      13,    0,  114,    3, 0x08,   11 /* Private */,
-      14,    0,  115,    3, 0x08,   12 /* Private */,
-      15,    0,  116,    3, 0x08,   13 /* Private */,
-      16,    1,  117,    3, 0x08,   14 /* Private */,
-      18,    1,  120,    3, 0x08,   16 /* Private */,
+       1,    0,  134,    3, 0x08,    1 /* Private */,
+       4,    0,  135,    3, 0x08,    2 /* Private */,
+       5,    0,  136,    3, 0x08,    3 /* Private */,
+       6,    0,  137,    3, 0x08,    4 /* Private */,
+       7,    0,  138,    3, 0x08,    5 /* Private */,
+       8,    0,  139,    3, 0x08,    6 /* Private */,
+       9,    0,  140,    3, 0x08,    7 /* Private */,
+      10,    0,  141,    3, 0x08,    8 /* Private */,
+      11,    0,  142,    3, 0x08,    9 /* Private */,
+      12,    0,  143,    3, 0x08,   10 /* Private */,
+      13,    0,  144,    3, 0x08,   11 /* Private */,
+      14,    0,  145,    3, 0x08,   12 /* Private */,
+      15,    0,  146,    3, 0x08,   13 /* Private */,
+      16,    1,  147,    3, 0x08,   14 /* Private */,
+      18,    1,  150,    3, 0x08,   16 /* Private */,
+      20,    0,  153,    3, 0x08,   18 /* Private */,
+      21,    0,  154,    3, 0x08,   19 /* Private */,
+      22,    0,  155,    3, 0x08,   20 /* Private */,
+      23,    0,  156,    3, 0x08,   21 /* Private */,
+      24,    0,  157,    3, 0x08,   22 /* Private */,
 
  // slots: parameters
     0x80000000 | 2,
@@ -107,6 +117,11 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSQtEditorENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QFont,   17,
     QMetaType::Void, QMetaType::QReal,   19,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -151,7 +166,17 @@ Q_CONSTINIT const QMetaObject QtEditor::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QFont, std::false_type>,
         // method 'setTextSize'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<qreal, std::false_type>
+        QtPrivate::TypeAndForceComplete<qreal, std::false_type>,
+        // method 'setColor'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'setFont'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'alignText'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'about'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'selectWindow'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -178,6 +203,11 @@ void QtEditor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 12: _t->setFontWidget(); break;
         case 13: _t->setTextFont((*reinterpret_cast< std::add_pointer_t<QFont>>(_a[1]))); break;
         case 14: _t->setTextSize((*reinterpret_cast< std::add_pointer_t<qreal>>(_a[1]))); break;
+        case 15: _t->setColor(); break;
+        case 16: _t->setFont(); break;
+        case 17: _t->alignText(); break;
+        case 18: _t->about(); break;
+        case 19: _t->selectWindow(); break;
         default: ;
         }
     }
@@ -202,13 +232,13 @@ int QtEditor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 20)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 15;
+        _id -= 20;
     }
     return _id;
 }
