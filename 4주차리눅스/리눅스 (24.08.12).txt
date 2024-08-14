@@ -1,7 +1,13 @@
 [virtualBox에 설치한 리눅스를 cmd에서 접속하기]
 
-ping 192.168.56.101
+ping 192.168.56.10	---> 안해도됨!
+
 ssh iam@192.168.56.101
+
+치고나서 리눅스 창에서 엔터!
+하고나서 로그인하기 
+iam, aboy
+그리고 다시 윈도우 cmd창
 	SSH? > yes
 	password? > aboy
 
@@ -407,6 +413,78 @@ chwon 사용자 파일
 
 리눅스종료 명령어 : sudo poweroff
 ---------------------------------------------------------------
+/////24년 08월 14일 수요일
+
+!!하면 그전 명령어가 실행
+_
+
+[]
+	iam@boy:~$ cat /etc/shadow
+	cat: /etc/shadow: Permission denied
+	iam@boy:~$ sudo !!
+	sudo cat /etc/shadow
+	[sudo] password for iam:
+
+
+
+_
+[로그아웃]   -> 원격말고 리눅스에서
+Ctrl+Alt + F3
+
+
+
+ls /bin을 보면 명령어들 볼수있다
+_
+[후면작업확인]
+
+jobs %1 
+ : 지금 하고있는 후면처리작업을 볼수 있다. 
+
+_
+
 ---------------------------------------------------------------
+[간단한 파일 만들기]
+
+	iam@boy:~$ cat >list.txt
+	Hi
+	!
+	This is the first list
+	iam@boy:~$ cat >list2.txt
+	Hi!
+	This is the Second list
+	iam@boy:~$
+		Ctrl+D하면 입력 종료
+	
+	
+	[C파일]
+		iam@boy:~$ cat >hello.c
+		#include <stdio.h>
+		int main()
+		{
+		printf("HelloWrold\n");
+		return 0;
+		}
+		iam@boy:~$ gcc -o hello hello.c
 ---------------------------------------------------------------
+[표준 입출력]
+#0 : stdin
+#1 : stdout
+
+
+[명령어나열]
+명령어들사이 ; (세미콜론) 하면 여러명령어 한번에 가능
+
+[여러 파일 한번에 삭제]
+	iam@boy:~$ touch a.txt b.txt c.txt
+	iam@boy:~$ rm [a-c].txt
+	iam@boy:~$ ls
+	a  list.txt
+
+
+[명령어대치]
+	iam@boy:~$ echo 현재 시간은 `date`
+	현재 시간은 Wed Aug 14 03:12:42 AM UTC 2024
+	iam@boy:~$ echo 현재 디렉터리 내의 파일의 개수 : `ls | wc -w`
+	현재 디렉터리 내의 파일의 개수 : 2
+
 ---------------------------------------------------------------
